@@ -34,7 +34,11 @@ def other_click():
     other_random = random.choice(other_recipe)
     rireki1.insert(tk.END, "・提案する料理は{}です。\n".format(other_random))
     rireki1.see("end")
-    
+
+def finish_click():
+    ret = tkmsg.askyesno("終了", "レシピ検索プログラムを終了します")
+    if ret == True:
+        root.destroy()    
     
 root = tk.Tk()
 root.geometry("500x700")
@@ -54,6 +58,9 @@ button2.place(x=180, y=130)
 
 button3 = tk.Button(root, text="その他", font=("Helvetica", 24), command=other_click)
 button3.place(x=180, y=220)
+
+button4 = tk.Button(root, text="終了", font=("HElvetica", 24), command=finish_click)
+button4.place(x=180, y=310)
 
 #縦方向のスクロールバーの作成
 yscroll = tk.Scrollbar(root, orient = tk.VERTICAL, command = rireki1.yview)
